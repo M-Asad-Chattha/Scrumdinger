@@ -50,6 +50,7 @@ struct MeetingView: View {
             }
             
         }
+        .navigationBarTitleDisplayMode(.inline)
         .padding()
         //        }
     }
