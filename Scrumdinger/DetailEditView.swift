@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct DetailEditView: View {
-    @State private var data = DailyScrum.Data()
+    @Binding var data: DailyScrum.Data
     @State private var newAttendeeName: String = ""
     
     var body: some View {
-        List {
+        Form {
             Section("Meeting Info") {
                 TextField("Title", text: $data.title)
-                
                 HStack {
                     Slider(value: $data.lengthInMinutes, in: 5...30, step: 1) {
                         // The Text view won’t appear on screen, but VoiceOver
@@ -27,6 +26,7 @@ struct DetailEditView: View {
                     // Hide the text view from VoiceOver.
                         .accessibilityHidden(true)
                 }
+                ThemePicker(selection: $data.theme)
             }
             
             Section("Attendees") {
@@ -61,7 +61,7 @@ struct DetailEditView: View {
 struct DetailEditView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            DetailEditView()
+            DetailEditView(data: .constant(DailyScrum.sampleData[0].data))
         }
     }
 }
