@@ -8,21 +8,15 @@
 import SwiftUI
 
 struct Test: View {
-    @State private var items: [String] = ["Item 1", "Item 2"]
+    @State private var showSettings = false
     
     var body: some View {
-        List {
-            Section(header: Text("Items")) {
-                ForEach(items, id: \.self) { item in
-                    Text(item)
-                }
-                HStack {
-                    Spacer()
-                    Button("Add Item") {
-                        self.items.append("New Item")
-                    }
-                }
-            }
+        Button("View Settings") {
+            showSettings = true
+        }
+        .sheet(isPresented: $showSettings) {
+            Text("In the name Of Allah")
+                .presentationDetents([.medium])
         }
     }
 }

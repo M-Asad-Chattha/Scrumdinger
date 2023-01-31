@@ -63,6 +63,7 @@ struct DetailView: View {
                 data = scrum.data
             }
         }
+        
         .sheet(isPresented: $isPresentingEditView) {
             NavigationStack {
                 DetailEditView(data: $data)
@@ -81,7 +82,10 @@ struct DetailView: View {
                         }
                     }
             }
+            // If you won't provide "large" Screen won't expand to full-size
+            .presentationDetents([.medium, .large])
         }
+        
     }
 }
 
