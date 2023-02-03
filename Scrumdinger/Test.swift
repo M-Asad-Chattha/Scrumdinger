@@ -8,16 +8,27 @@
 import SwiftUI
 
 struct Test: View {
-    @State private var showSettings = false
+    let colors: [Color] = [.red, .green, .blue]
     
     var body: some View {
-        Button("View Settings") {
-            showSettings = true
+        ScrollViewReader { proxy in
+            ScrollView {
+                Button("Scroll to view 8") {
+                    withAnimation {
+                        proxy.scrollTo(8, anchor: .bottomTrailing)
+                    }
+                }
+                
+                ForEach(0..<15) { i in
+                    Text("Text Number \(i)")
+                        .frame(width: 200, height: 100)
+                        .background(.red)
+                        .id(i)
+                }
+            }
         }
-        .sheet(isPresented: $showSettings) {
-            Text("In the name Of Allah")
-                .presentationDetents([.medium])
-        }
+        .frame(height: 350)
+        
     }
 }
 
