@@ -15,6 +15,7 @@ struct ScrumdingerApp: App {
         WindowGroup {
             NavigationStack {
                 ScrumsView(scrums: $scrums)
+                // Test()
             }
         }
     }

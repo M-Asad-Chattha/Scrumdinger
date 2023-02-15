@@ -4,31 +4,29 @@
 //
 //  Created by Muhammad Asad Chattha on 27/01/2023.
 //
-
 import SwiftUI
 
 struct Test: View {
-    let colors: [Color] = [.red, .green, .blue]
+    let price = 200
+    let tipAmount = 15
+    var totalPrice: String {
+        let tipValue = price / 100 * tipAmount
+        return (price + tipValue).formatted(.currency(code: "USD"))
+    }
     
     var body: some View {
-        ScrollViewReader { proxy in
-            ScrollView {
-                Button("Scroll to view 8") {
-                    withAnimation {
-                        proxy.scrollTo(8, anchor: .bottomTrailing)
-                    }
-                }
-                
-                ForEach(0..<15) { i in
-                    Text("Text Number \(i)")
-                        .frame(width: 200, height: 100)
-                        .background(.red)
-                        .id(i)
+        VStack {
+            
+            Form {
+                Section("Total: \(totalPrice)") {
+                    Button("Confirm Order") {}
+                    Text("Tip: \(15, format: .percent)")
+                    Text(String(format: "The price is $%.1f", 19.99))
+                    
                 }
             }
+            
         }
-        .frame(height: 350)
-        
     }
 }
 
