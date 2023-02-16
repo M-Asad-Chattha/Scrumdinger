@@ -28,6 +28,7 @@
 		DCD1166329810A1D00D394C4 /* MeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD1166229810A1D00D394C4 /* MeetingView.swift */; };
 		DCD1166529810A1E00D394C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCD1166429810A1E00D394C4 /* Assets.xcassets */; };
 		DCD1166829810A1E00D394C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCD1166729810A1E00D394C4 /* Preview Assets.xcassets */; };
+		DCF98D12299D14DF006F963B /* ScrumStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF98D11299D14DF006F963B /* ScrumStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		DCD1166229810A1D00D394C4 /* MeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingView.swift; sourceTree = "<group>"; };
 		DCD1166429810A1E00D394C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCD1166729810A1E00D394C4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DCF98D11299D14DF006F963B /* ScrumStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrumStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				DC12B97729816DA50030704B /* Theme.swift */,
 				DC12B979298182FB0030704B /* DailyScrum.swift */,
 				DC106DD32991F6420052465B /* History.swift */,
+				DCF98D11299D14DF006F963B /* ScrumStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				DC6D484F298933A400FD3B20 /* ScrumProgressViewStyle.swift in Sources */,
 				DC12B9822983764F0030704B /* DetailView.swift in Sources */,
 				DC12B9842983B6830030704B /* DetailEditView.swift in Sources */,
+				DCF98D12299D14DF006F963B /* ScrumStore.swift in Sources */,
 				DC12B97E29822A1A0030704B /* TrailingIconLabelStyle.swift in Sources */,
 				DC12B97829816DA50030704B /* Theme.swift in Sources */,
 				DC6D484D29892DC000FD3B20 /* MeetingHeaderView.swift in Sources */,
