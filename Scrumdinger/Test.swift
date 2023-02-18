@@ -7,26 +7,29 @@
 import SwiftUI
 
 struct Test: View {
-    let price = 200
-    let tipAmount = 15
-    var totalPrice: String {
-        let tipValue = price / 100 * tipAmount
-        return (price + tipValue).formatted(.currency(code: "USD"))
-    }
+    @State private var showSettings = false
+    @State private var flag = true
     
     var body: some View {
         VStack {
+            Toggle("Toggle", isOn: $flag)
+                .padding (.horizontal, 64)
             
-            Form {
-                Section("Total: \(totalPrice)") {
-                    Button("Confirm Order") {}
-                    Text("Tip: \(15, format: .percent)")
-                    Text(String(format: "The price is $%.1f", 19.99))
-                    
-                }
+            Button ("View Settings") {
+                showSettings = true
             }
             
+            Spacer ()
         }
+        .padding(64)
+        .sheet (isPresented: $showSettings) {
+//        SettingsView()
+            Text("Settings View")
+                .presentationDetents ([.height (240) , .medium, .large])
+//                .presentationBackgroundInteraction(.enabled(upThrough: .height(240)))
+//        .presentationBackground(.thickMaterial)
+        }
+        
     }
 }
 

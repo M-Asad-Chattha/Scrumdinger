@@ -55,4 +55,47 @@ class ScrumStore: ObservableObject {
             }
         }
     }
+    
+    // MARK: - Modernizing by Using Structured Concurrency using withCheckedThrowingContinuation
+    
+    static func load() async throws -> [DailyScrum] {
+        try await withCheckedThrowingContinuation { continuation in
+            load { result in
+                switch result {
+                case .success(let scrums):
+                    continuation.resume(returning: scrums)
+                case .failure(let error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+    
+    /// save func's  returned 'Int' value can be ignored
+    @discardableResult
+    static func save(scrums: [DailyScrum]) async throws -> Int {
+        try await withCheckedThrowingContinuation { continuation in
+            save(scrums: scrums) { result in
+                switch result {
+                case .success(let scrumsSaved):
+                    continuation.resume(returning: scrumsSaved)
+                case .failure(let error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+    
+    // MARK: - Aync/Await Cocurrency
+
+//    static func load() async throws -> [DailyScrum] {
+//        do {
+//            let fileURL = try fileURL()
+//            guard let file = try? FileHandle(forReadingFrom: fileURL) else { return [] }
+//            let data = try JSONDecoder().decode([DailyScrum].self, from: file.availableData)
+//            return data
+//        } catch {
+//            fatalError()
+//        }
+//    }
 }

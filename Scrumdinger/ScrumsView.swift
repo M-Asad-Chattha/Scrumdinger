@@ -25,6 +25,7 @@ struct ScrumsView: View {
                 .listRowBackground(scrum.theme.mainColor)
             }
         }
+        .listRowSeparator(.hidden)
         .navigationTitle("Daily Scrums")
         .toolbar {
             Button (action: {
