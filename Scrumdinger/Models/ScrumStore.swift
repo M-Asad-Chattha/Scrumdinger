@@ -13,6 +13,7 @@ import SwiftUI
 class ScrumStore: ObservableObject {
     @Published var scrums: [DailyScrum] = []
     
+    // Return File 'URL' of User Documents Directory + append new path
     private static func fileURL() throws -> URL {
         try FileManager.default.url(for: .documentDirectory,
                                     in: .userDomainMask,
@@ -21,6 +22,34 @@ class ScrumStore: ObservableObject {
         .appending(path: "scrums.data")
     }
     
+    // MARK: - Aync/Await Structured Cocurrency
+    
+    // Load and Decode Serailized Data (in JSON) from User Files Directory
+    static func loadAsync() async throws -> [DailyScrum] {
+        do {
+            let fileURL = try fileURL()
+            guard let file = try? FileHandle(forReadingFrom: fileURL) else { return [] }
+            let scrums = try JSONDecoder().decode([DailyScrum].self, from: file.availableData)
+            return scrums
+        }
+    }
+    
+    // Encode data (in JSON) and save that serailized data in User's Files Directory
+    @discardableResult
+    static func saveAsync(scrums: [DailyScrum]) async throws -> Int {
+        do {
+            let data = try JSONEncoder().encode(scrums)
+            let outfile = try fileURL()
+            try data.write(to: outfile)
+            return scrums.count
+        }
+    }
+}
+
+/*
+    // MARK: - Cocurrency using Completion-Handler Approach [old & complex-approach]
+    
+    // Load and Decode Serailized Data (in JSON) from User Files Directory
     static func load(completion: @escaping (Result<[DailyScrum], Error>)-> Void) {
         DispatchQueue.global(qos: .background).async {
             do {
@@ -36,11 +65,14 @@ class ScrumStore: ObservableObject {
                     completion(.success(dailyScrums))
                 }
             } catch {
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
             }
         }
     }
     
+    // Encode data (in JSON) and save that serailized data in User Files Directory
     static func save(scrums: [DailyScrum], completion: @escaping (Result<Int, Error>)-> Void) {
         DispatchQueue.global(qos: .background).async {
             do {
@@ -51,12 +83,14 @@ class ScrumStore: ObservableObject {
                     completion(.success(scrums.count))
                 }
             } catch {
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
             }
         }
     }
     
-    // MARK: - Modernizing by Using Structured Concurrency using withCheckedThrowingContinuation
+    // MARK: - Modernizing Concurrency Code Using Structured Concurrency
     
     static func load() async throws -> [DailyScrum] {
         try await withCheckedThrowingContinuation { continuation in
@@ -70,8 +104,7 @@ class ScrumStore: ObservableObject {
             }
         }
     }
-    
-    /// save func's  returned 'Int' value can be ignored
+    // Using @discardableResult save func's  returned 'Int' value can be ignored
     @discardableResult
     static func save(scrums: [DailyScrum]) async throws -> Int {
         try await withCheckedThrowingContinuation { continuation in
@@ -85,17 +118,7 @@ class ScrumStore: ObservableObject {
             }
         }
     }
-    
-    // MARK: - Aync/Await Cocurrency
+ */
 
-//    static func load() async throws -> [DailyScrum] {
-//        do {
-//            let fileURL = try fileURL()
-//            guard let file = try? FileHandle(forReadingFrom: fileURL) else { return [] }
-//            let data = try JSONDecoder().decode([DailyScrum].self, from: file.availableData)
-//            return data
-//        } catch {
-//            fatalError()
-//        }
-//    }
-}
+
+

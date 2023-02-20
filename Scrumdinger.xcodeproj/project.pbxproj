@@ -29,6 +29,8 @@
 		DCD1166529810A1E00D394C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCD1166429810A1E00D394C4 /* Assets.xcassets */; };
 		DCD1166829810A1E00D394C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCD1166729810A1E00D394C4 /* Preview Assets.xcassets */; };
 		DCF98D12299D14DF006F963B /* ScrumStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF98D11299D14DF006F963B /* ScrumStore.swift */; };
+		DCFA68D529A08E6900C473AB /* ErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFA68D429A08E6900C473AB /* ErrorWrapper.swift */; };
+		DCFA68D729A0ECCC00C473AB /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFA68D629A0ECCC00C473AB /* ErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		DCD1166429810A1E00D394C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCD1166729810A1E00D394C4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DCF98D11299D14DF006F963B /* ScrumStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrumStore.swift; sourceTree = "<group>"; };
+		DCFA68D429A08E6900C473AB /* ErrorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorWrapper.swift; sourceTree = "<group>"; };
+		DCFA68D629A0ECCC00C473AB /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 				DC12B979298182FB0030704B /* DailyScrum.swift */,
 				DC106DD32991F6420052465B /* History.swift */,
 				DCF98D11299D14DF006F963B /* ScrumStore.swift */,
+				DCFA68D429A08E6900C473AB /* ErrorWrapper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 				DC12B97629816D840030704B /* Models */,
 				DCD1166429810A1E00D394C4 /* Assets.xcassets */,
 				DCD1166629810A1E00D394C4 /* Preview Content */,
+				DCFA68D629A0ECCC00C473AB /* ErrorView.swift */,
 			);
 			path = Scrumdinger;
 			sourceTree = "<group>";
@@ -212,10 +218,12 @@
 				DC12B97A298182FB0030704B /* DailyScrum.swift in Sources */,
 				DC9EDF6A2985546F000D807A /* ThemeView.swift in Sources */,
 				DC6D484F298933A400FD3B20 /* ScrumProgressViewStyle.swift in Sources */,
+				DCFA68D729A0ECCC00C473AB /* ErrorView.swift in Sources */,
 				DC12B9822983764F0030704B /* DetailView.swift in Sources */,
 				DC12B9842983B6830030704B /* DetailEditView.swift in Sources */,
 				DCF98D12299D14DF006F963B /* ScrumStore.swift in Sources */,
 				DC12B97E29822A1A0030704B /* TrailingIconLabelStyle.swift in Sources */,
+				DCFA68D529A08E6900C473AB /* ErrorWrapper.swift in Sources */,
 				DC12B97829816DA50030704B /* Theme.swift in Sources */,
 				DC6D484D29892DC000FD3B20 /* MeetingHeaderView.swift in Sources */,
 				DC12B98029828DA70030704B /* ScrumsView.swift in Sources */,

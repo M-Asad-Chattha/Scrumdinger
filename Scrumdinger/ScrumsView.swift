@@ -12,7 +12,8 @@ struct ScrumsView: View {
     @Environment(\.scenePhase) private var scenePhase
     @State private var newScrumData = DailyScrum.Data()
     @State private var isPresentingNewScrumView = false
-    var saveAction: ()->Void
+    // Call this saveAction when scenePhase is in-active (like; you go to home on iPhone)
+    let saveAction: ()->Void
     
     var body: some View {
         List {
@@ -57,10 +58,11 @@ struct ScrumsView: View {
             }
         }
         .onChange(of: scenePhase) { phase in
+            // If scenePhase in inactive(like you go to Home on iPhone), save data
             if phase == .inactive { saveAction() }
         }
-        
     }
+    
 }
 
 struct ScrumsView_Previews: PreviewProvider {
