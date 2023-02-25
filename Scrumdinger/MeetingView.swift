@@ -9,12 +9,9 @@ import SwiftUI
 import AVFoundation
 
 struct MeetingView: View {
-    private var player: AVPlayer { AVPlayer.sharedDingPlayer }
-    
     @Binding var scrum: DailyScrum
     @StateObject var scrumTimer = ScrumTimer()
-    
-    //private var player: AVPlayer { AVPlayer.sharedDingPlayer }
+    private var player: AVPlayer { AVPlayer.sharedDingPlayer }
     
     var body: some View {
         ZStack {
@@ -23,8 +20,7 @@ struct MeetingView: View {
             
             VStack {
                 MeetingHeaderView(secondsElapsed: scrumTimer.secondsElapsed, secondsRemaining: scrumTimer.secondsRemaining, theme: scrum.theme)
-                Circle()
-                    .strokeBorder(lineWidth: 24)
+                MeetingTimerView(speakers: scrumTimer.speakers, theme: scrum.theme)
                 MeetingFooterView(speakers: scrumTimer.speakers, skipAction: scrumTimer.skipSpeaker)
             }
         }
@@ -50,6 +46,6 @@ struct MeetingView: View {
 
 struct MeetingView_Previews: PreviewProvider {
     static var previews: some View {
-        MeetingView(scrum: .constant(DailyScrum.sampleData[0]))
+        MeetingView(scrum: .constant(DailyScrum.sampleData[1]))
     }
 }
