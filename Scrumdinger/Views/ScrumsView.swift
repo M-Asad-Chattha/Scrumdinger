@@ -23,6 +23,7 @@ struct ScrumsView: View {
                 NavigationLink(destination: DetailView(scrum: $scrum)) {
                     CardView(scrum: scrum)
                 }
+                .isDetailLink(false)
                 .listRowBackground(scrum.theme.mainColor)
             }
         }
@@ -59,7 +60,7 @@ struct ScrumsView: View {
         }
         .onChange(of: scenePhase) { phase in
             // If scenePhase in inactive(like you go to Home on iPhone), save data
-            if phase == .inactive { saveAction() }
+             if phase == .inactive { saveAction() }
         }
     }
     

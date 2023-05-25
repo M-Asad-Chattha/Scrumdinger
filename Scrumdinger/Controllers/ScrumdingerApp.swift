@@ -14,6 +14,7 @@
      
      var body: some Scene {
          WindowGroup {
+             
              NavigationView {
                  // ScrumsView(scrums: <#T##Binding<[DailyScrum]>#>, saveAction: <#T##() -> Void#>)
                  ScrumsView(scrums: $store.scrums) {
@@ -40,6 +41,10 @@
              }) { wrapper in
                  ErrorView(errorWrapper: wrapper)
              }
+             
+             
+//             Test()
          }
+         
      }
  }
